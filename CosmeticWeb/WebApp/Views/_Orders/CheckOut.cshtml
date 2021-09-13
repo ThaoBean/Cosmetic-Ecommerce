@@ -1,0 +1,51 @@
+﻿@using WebApp.Models
+@model MixCartOrder
+@using WebApp.Helper
+@{
+    var sessionCus = (CustomerLogin)Session[Constants.CUSTOMER_SESSION];
+}
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Check out</li>
+            </ol>
+        </div><!--/breadcrums-->
+
+
+        <div class="shopper-informations">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="shopper-info">
+                        <p>Shopper Information</p>
+                        @using (Html.BeginForm("CheckOut", "_Orders", FormMethod.Post))
+                        {
+                            <form>
+                                @Html.TextBoxFor(m => m.MOrder.Name_Reciever, new { @placeholder = "Name Reciever", @required = "" })
+                                @Html.TextBoxFor(m => m.MOrder.Phone_Reciever, new { @placeholder = "Phone Reciever", @required = "" })
+                                @Html.TextBoxFor(m => m.MOrder.Shipping_Addr, new { @placeholder = "Address Reciever", @required = "" })
+                                <input type="submit" value="OrderNow" class="btn btn-primary" />
+
+                            </form>
+                        }
+                        
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="order-message">
+                        <p>Shipping Note</p>
+                        <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="12"></textarea>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#cart_items-->

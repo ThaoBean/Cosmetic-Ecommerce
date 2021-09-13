@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbComesticModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbBrand">
+    <Key>
+      <PropertyRef Name="Id_Brand" />
+    </Key>
+    <Property Name="Id_Brand" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Brand" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbProducts" Relationship="Self.FK_tbProducts_tbBrands" FromRole="tbBrands" ToRole="tbProducts" />
+  </EntityType>
+  <EntityType Name="tbCart">
+    <Key>
+      <PropertyRef Name="Id_Cart" />
+    </Key>
+    <Property Name="Id_Cart" Type="Int64" Nullable="false" />
+    <Property Name="Id_Customer" Type="Int64" />
+    <Property Name="Image_Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name_Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Product" Type="Int64" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="UnitsTotal" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="tbCustomer" Relationship="Self.FK_tbCarts_tbCustomers" FromRole="tbCarts" ToRole="tbCustomers" />
+    <NavigationProperty Name="tbProduct" Relationship="Self.FK_tbCarts_tbProducts" FromRole="tbCarts" ToRole="tbProducts" />
+  </EntityType>
+  <EntityType Name="tbCategory">
+    <Key>
+      <PropertyRef Name="Id_Category" />
+    </Key>
+    <Property Name="Id_Category" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Category" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbProducts" Relationship="Self.FK_tbProducts_tbCategories" FromRole="tbCategories" ToRole="tbProducts" />
+  </EntityType>
+  <EntityType Name="tbContact">
+    <Key>
+      <PropertyRef Name="Id_Contact" />
+    </Key>
+    <Property Name="Id_Contact" Type="Int64" Nullable="false" />
+    <Property Name="Name_Contact" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email_Contact" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Subject_Contact" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Content_Contatc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbCustomer">
+    <Key>
+      <PropertyRef Name="Id_Customer" />
+    </Key>
+    <Property Name="Id_Customer" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Customer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email_Customer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Addr_Customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password_Customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Created" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tbCarts" Relationship="Self.FK_tbCarts_tbCustomers" FromRole="tbCustomers" ToRole="tbCarts" />
+    <NavigationProperty Name="tbOrders" Relationship="Self.FK_tbOrders_tbCustomers" FromRole="tbCustomers" ToRole="tbOrders" />
+    <NavigationProperty Name="tbReviewers" Relationship="Self.FK_tbReviewers_tbCustomers" FromRole="tbCustomers" ToRole="tbReviewers" />
+  </EntityType>
+  <EntityType Name="tbNation">
+    <Key>
+      <PropertyRef Name="Id_Nation" />
+    </Key>
+    <Property Name="Id_Nation" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Nation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbProducts" Relationship="Self.FK_tbProducts_tbNations" FromRole="tbNations" ToRole="tbProducts" />
+  </EntityType>
+  <EntityType Name="tbOrderDetail">
+    <Key>
+      <PropertyRef Name="Id_OrderDetail" />
+    </Key>
+    <Property Name="Id_OrderDetail" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Order" Type="Int64" />
+    <Property Name="Id_Product" Type="Int64" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price_OrderDetail" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="tbOrder" Relationship="Self.FK_tbOrderDetails_tbOrders" FromRole="tbOrderDetails" ToRole="tbOrders" />
+    <NavigationProperty Name="tbProduct" Relationship="Self.FK_tbOrderDetails_tbProducts" FromRole="tbOrderDetails" ToRole="tbProducts" />
+  </EntityType>
+  <EntityType Name="tbOrder">
+    <Key>
+      <PropertyRef Name="Id_Order" />
+    </Key>
+    <Property Name="Id_Order" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Customer" Type="Int64" />
+    <Property Name="Shipping_Addr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_Reciever" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name_Reciever" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Price_Total" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="tbCustomer" Relationship="Self.FK_tbOrders_tbCustomers" FromRole="tbOrders" ToRole="tbCustomers" />
+    <NavigationProperty Name="tbOrderDetails" Relationship="Self.FK_tbOrderDetails_tbOrders" FromRole="tbOrders" ToRole="tbOrderDetails" />
+  </EntityType>
+  <EntityType Name="tbProduct">
+    <Key>
+      <PropertyRef Name="Id_Product" />
+    </Key>
+    <Property Name="Id_Product" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Brand" Type="Int64" />
+    <Property Name="Id_Nation" Type="Int64" />
+    <Property Name="Id_Category" Type="Int64" />
+    <Property Name="Name_Product" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description_Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Detail_Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image_Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quality_Product" Type="Int32" />
+    <Property Name="Price_Product" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Sale_Product" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Hot_Product" Type="Boolean" />
+    <Property Name="Rate_Total_Product" Type="Int32" />
+    <NavigationProperty Name="tbBrand" Relationship="Self.FK_tbProducts_tbBrands" FromRole="tbProducts" ToRole="tbBrands" />
+    <NavigationProperty Name="tbCarts" Relationship="Self.FK_tbCarts_tbProducts" FromRole="tbProducts" ToRole="tbCarts" />
+    <NavigationProperty Name="tbCategory" Relationship="Self.FK_tbProducts_tbCategories" FromRole="tbProducts" ToRole="tbCategories" />
+    <NavigationProperty Name="tbNation" Relationship="Self.FK_tbProducts_tbNations" FromRole="tbProducts" ToRole="tbNations" />
+    <NavigationProperty Name="tbOrderDetails" Relationship="Self.FK_tbOrderDetails_tbProducts" FromRole="tbProducts" ToRole="tbOrderDetails" />
+    <NavigationProperty Name="tbReviewers" Relationship="Self.FK_tbReviewers_tbProducts" FromRole="tbProducts" ToRole="tbReviewers" />
+  </EntityType>
+  <EntityType Name="tbReviewer">
+    <Key>
+      <PropertyRef Name="Id_Reviewer" />
+    </Key>
+    <Property Name="Id_Reviewer" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Product" Type="Int64" />
+    <Property Name="Id_Customer" Type="Int64" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Created_Reviewer" Type="DateTime" Precision="3" />
+    <Property Name="Rate_Reviewer" Type="Int32" />
+    <NavigationProperty Name="tbCustomer" Relationship="Self.FK_tbReviewers_tbCustomers" FromRole="tbReviewers" ToRole="tbCustomers" />
+    <NavigationProperty Name="tbProduct" Relationship="Self.FK_tbReviewers_tbProducts" FromRole="tbReviewers" ToRole="tbProducts" />
+  </EntityType>
+  <EntityType Name="tbUser">
+    <Key>
+      <PropertyRef Name="Id_User" />
+    </Key>
+    <Property Name="Id_User" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_User" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email_User" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Password_User" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Created_User" Type="DateTime" Precision="3" />
+    <Property Name="Status_User" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_tbProducts_tbBrands">
+    <End Role="tbBrands" Type="Self.tbBrand" Multiplicity="0..1" />
+    <End Role="tbProducts" Type="Self.tbProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbBrands">
+        <PropertyRef Name="Id_Brand" />
+      </Principal>
+      <Dependent Role="tbProducts">
+        <PropertyRef Name="Id_Brand" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbCarts_tbCustomers">
+    <End Role="tbCustomers" Type="Self.tbCustomer" Multiplicity="0..1" />
+    <End Role="tbCarts" Type="Self.tbCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCustomers">
+        <PropertyRef Name="Id_Customer" />
+      </Principal>
+      <Dependent Role="tbCarts">
+        <PropertyRef Name="Id_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbCarts_tbProducts">
+    <End Role="tbProducts" Type="Self.tbProduct" Multiplicity="0..1" />
+    <End Role="tbCarts" Type="Self.tbCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProducts">
+        <PropertyRef Name="Id_Product" />
+      </Principal>
+      <Dependent Role="tbCarts">
+        <PropertyRef Name="Id_Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbProducts_tbCategories">
+    <End Role="tbCategories" Type="Self.tbCategory" Multiplicity="0..1" />
+    <End Role="tbProducts" Type="Self.tbProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCategories">
+        <PropertyRef Name="Id_Category" />
+      </Principal>
+      <Dependent Role="tbProducts">
+        <PropertyRef Name="Id_Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbOrders_tbCustomers">
+    <End Role="tbCustomers" Type="Self.tbCustomer" Multiplicity="0..1" />
+    <End Role="tbOrders" Type="Self.tbOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCustomers">
+        <PropertyRef Name="Id_Customer" />
+      </Principal>
+      <Dependent Role="tbOrders">
+        <PropertyRef Name="Id_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbReviewers_tbCustomers">
+    <End Role="tbCustomers" Type="Self.tbCustomer" Multiplicity="0..1" />
+    <End Role="tbReviewers" Type="Self.tbReviewer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCustomers">
+        <PropertyRef Name="Id_Customer" />
+      </Principal>
+      <Dependent Role="tbReviewers">
+        <PropertyRef Name="Id_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbProducts_tbNations">
+    <End Role="tbNations" Type="Self.tbNation" Multiplicity="0..1" />
+    <End Role="tbProducts" Type="Self.tbProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbNations">
+        <PropertyRef Name="Id_Nation" />
+      </Principal>
+      <Dependent Role="tbProducts">
+        <PropertyRef Name="Id_Nation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbOrderDetails_tbOrders">
+    <End Role="tbOrders" Type="Self.tbOrder" Multiplicity="0..1" />
+    <End Role="tbOrderDetails" Type="Self.tbOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbOrders">
+        <PropertyRef Name="Id_Order" />
+      </Principal>
+      <Dependent Role="tbOrderDetails">
+        <PropertyRef Name="Id_Order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbOrderDetails_tbProducts">
+    <End Role="tbProducts" Type="Self.tbProduct" Multiplicity="0..1" />
+    <End Role="tbOrderDetails" Type="Self.tbOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProducts">
+        <PropertyRef Name="Id_Product" />
+      </Principal>
+      <Dependent Role="tbOrderDetails">
+        <PropertyRef Name="Id_Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbReviewers_tbProducts">
+    <End Role="tbProducts" Type="Self.tbProduct" Multiplicity="0..1" />
+    <End Role="tbReviewers" Type="Self.tbReviewer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProducts">
+        <PropertyRef Name="Id_Product" />
+      </Principal>
+      <Dependent Role="tbReviewers">
+        <PropertyRef Name="Id_Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbComesticEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tbBrands" EntityType="Self.tbBrand" />
+    <EntitySet Name="tbCarts" EntityType="Self.tbCart" />
+    <EntitySet Name="tbCategories" EntityType="Self.tbCategory" />
+    <EntitySet Name="tbContacts" EntityType="Self.tbContact" />
+    <EntitySet Name="tbCustomers" EntityType="Self.tbCustomer" />
+    <EntitySet Name="tbNations" EntityType="Self.tbNation" />
+    <EntitySet Name="tbOrderDetails" EntityType="Self.tbOrderDetail" />
+    <EntitySet Name="tbOrders" EntityType="Self.tbOrder" />
+    <EntitySet Name="tbProducts" EntityType="Self.tbProduct" />
+    <EntitySet Name="tbReviewers" EntityType="Self.tbReviewer" />
+    <EntitySet Name="tbUsers" EntityType="Self.tbUser" />
+    <AssociationSet Name="FK_tbProducts_tbBrands" Association="Self.FK_tbProducts_tbBrands">
+      <End Role="tbBrands" EntitySet="tbBrands" />
+      <End Role="tbProducts" EntitySet="tbProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbCarts_tbCustomers" Association="Self.FK_tbCarts_tbCustomers">
+      <End Role="tbCustomers" EntitySet="tbCustomers" />
+      <End Role="tbCarts" EntitySet="tbCarts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbCarts_tbProducts" Association="Self.FK_tbCarts_tbProducts">
+      <End Role="tbProducts" EntitySet="tbProducts" />
+      <End Role="tbCarts" EntitySet="tbCarts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbProducts_tbCategories" Association="Self.FK_tbProducts_tbCategories">
+      <End Role="tbCategories" EntitySet="tbCategories" />
+      <End Role="tbProducts" EntitySet="tbProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbOrders_tbCustomers" Association="Self.FK_tbOrders_tbCustomers">
+      <End Role="tbCustomers" EntitySet="tbCustomers" />
+      <End Role="tbOrders" EntitySet="tbOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbReviewers_tbCustomers" Association="Self.FK_tbReviewers_tbCustomers">
+      <End Role="tbCustomers" EntitySet="tbCustomers" />
+      <End Role="tbReviewers" EntitySet="tbReviewers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbProducts_tbNations" Association="Self.FK_tbProducts_tbNations">
+      <End Role="tbNations" EntitySet="tbNations" />
+      <End Role="tbProducts" EntitySet="tbProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbOrderDetails_tbOrders" Association="Self.FK_tbOrderDetails_tbOrders">
+      <End Role="tbOrders" EntitySet="tbOrders" />
+      <End Role="tbOrderDetails" EntitySet="tbOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbOrderDetails_tbProducts" Association="Self.FK_tbOrderDetails_tbProducts">
+      <End Role="tbProducts" EntitySet="tbProducts" />
+      <End Role="tbOrderDetails" EntitySet="tbOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbReviewers_tbProducts" Association="Self.FK_tbReviewers_tbProducts">
+      <End Role="tbProducts" EntitySet="tbProducts" />
+      <End Role="tbReviewers" EntitySet="tbReviewers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

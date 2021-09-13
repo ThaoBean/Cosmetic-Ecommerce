@@ -1,0 +1,51 @@
+﻿@using WebApp.Models
+@model IEnumerable<WebApp.Models._ProductsBLL>
+@using WebApp.Helper
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+    var sessionCus = (CustomerLogin)Session[Constants.CUSTOMER_SESSION];
+}
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center">Features Items</h2>
+        @foreach (var item in Model)
+        {
+            count += 1;
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+
+                            <img src="@Url.Content(item.Image_Product)" alt="" />
+                            <h2>@string.Format("{0:#,##0}", item.Price) đ</h2>
+                            <p>@item.Name_Product</p>
+                            @if (sessionCus != null)
+                            {
+                                <a href="@Url.Action("AddToCart", "_Carts", new { idCus = sessionCus.CustomerID, Img = item.Image_Product, NamePro = item.Name_Product, IdPro = item.Id_Product, UnitPrice = item.Price})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("LoginRegister", "_Customers")" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            }
+                        </div>
+
+                    </div>
+                    <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href="@Url.Action("ShowDetailProduct", "_Products",  new {idProduct = item.Id_Product })"><i class="fa fa-plus-square"></i>Detail</a></li>
+                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div><!--features_items-->
+
+    @Html.Action("RecommendItem", "_Home")
+
+
+</div>

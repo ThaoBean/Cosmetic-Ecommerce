@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApp.Areas.Admin.Models.OrdersBLL>
+@{
+    ViewBag.Title = "GetAllOrders";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Tables</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Dashboard</a></li>
+            <li class="breadcrumb-item active">Orders</li>
+        </ol>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Orders
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id Order</th>
+                                <th>Name Customer</th>
+                                <th>Address</th>
+                                <th>Name Reciever</th>
+                                <th>Phone Reciever</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id_Order</td>
+                                    <td>@item.Name_Customer</td>
+                                    <td>@item.Shipping_Addr</td>
+                                    <td>@item.Name_Reciever</td>
+                                    <td>@item.Phone_Reciever</td>
+                                    <td>@item.Date.Value.ToString("dd/MM/yyyy hh:mm:ss")</td>
+                                    <td>@item.Price_Total</td>
+                                    <td>@item.Status</td>
+                                    <td>
+                                        @Html.ActionLink("EDIT", "Edit", new { id = @item.Id_Customer }, new { @class = "badge badge-warning" })<br />
+                                        @Html.ActionLink("DELETE", "Delete", new { id = @item.Id_Customer }, new { @class = "badge badge-danger" })<br />
+                                        @Html.ActionLink("DETAILS", "DetailsOrderByIdOrder", "OrderDetails", new { idOrder = item.Id_Order }, new { @class = "badge badge-warning" })<br />
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

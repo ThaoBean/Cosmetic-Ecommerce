@@ -1,0 +1,30 @@
+﻿@using WebApp.Models
+@model MixBrandCategory
+<h2>Category</h2>
+<div class="panel-group category-products" id="accordian">
+
+    <!--category-productsr-->
+   
+    @foreach (var item in Model.categories) { 
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="@Url.Action("ListProductsByCategory", "_Products", new { idCate = item.Id_Category})">@item.Name_Category</a></h4>
+                </div>
+            </div>
+    }
+        </div><!--/category-products-->
+
+        <div class="brands_products">
+            <!--brands_products-->
+            <h2>Brands</h2>
+            <div class="brands-name">
+                <ul class="nav nav-pills nav-stacked">
+                    @foreach (var item1 in Model.brands)
+                    {
+                        <li><a href="@Url.Action("ListProductsByBrand", "_Products", new { idBrand = item1.Id_Brand})"> <span class="pull-right"></span>@item1.Name_Brand</a></li>
+                    }
+
+
+                </ul>
+            </div>
+        </div><!--/brands_products-->

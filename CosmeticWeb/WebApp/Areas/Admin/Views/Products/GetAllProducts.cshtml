@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebApp.Areas.Admin.Models.ProductsBLL>
+@{
+    ViewBag.Title = "GetAllProducts";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+  
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Tables</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Dashboard</a></li>
+            <li class="breadcrumb-item active">Products</li>
+        </ol>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Products
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Brand</th>
+                                <th>Nation</th>
+                                <th>Category</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Detail</th>
+                                <th>Image</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Sale</th>
+                                <th>Hot</th>
+                                <th>Rate</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name_Brand</td>
+                                    <td>@item.Name_Nation</td>
+                                    <td>@item.Name_Category</td>
+                                    <td>@item.Name_Product</td>
+                                    <td>@item.Description_Product</td>
+                                    <td>@item.Detail_Product</td>
+                                    @*<td>@item.Image_Product</td>*@
+                                    <td><img src="@Url.Content(@item.Image_Product)" width="80" height="80" class="img-rounded" /></td>
+                                    <td>@item.Quality_Product</td>
+                                    <td>@item.Price_Product</td>
+                                    <td>@item.Sale_Product</td>
+                                    <td>@item.Hot_Product</td>
+                                    <td>@item.Rate_Total_Product</td>
+                                    <td>
+                                        @Html.ActionLink("EDIT", "Edit", new { id = @item.Id_Product }, new { @class = "badge badge-warning" })<br />
+                                        @Html.ActionLink("DELETE", "Delete", new { id = @item.Id_Product }, new { @class = "badge badge-danger" })
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+

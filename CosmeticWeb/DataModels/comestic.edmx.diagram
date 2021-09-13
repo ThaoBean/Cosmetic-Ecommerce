@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1cb2d0a7d8d4d979320bcbb23a66aa6" Name="Diagram1">
+        <EntityTypeShape EntityType="DbComesticModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbBrand" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbCart" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbCategory" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbContact" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbCustomer" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbNation" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbOrderDetail" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbOrder" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbProduct" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbReviewer" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbComesticModel.tbUser" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DbComesticModel.FK_tbProducts_tbBrands" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbCarts_tbCustomers" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbCarts_tbProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbProducts_tbCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbOrders_tbCustomers" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbReviewers_tbCustomers" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbProducts_tbNations" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbOrderDetails_tbOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbOrderDetails_tbProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="DbComesticModel.FK_tbReviewers_tbProducts" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

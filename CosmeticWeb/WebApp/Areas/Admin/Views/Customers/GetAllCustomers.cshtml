@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApp.Areas.Admin.Models.CustomersBLL>
+@{
+    ViewBag.Title = "GetAllCustomers";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Tables</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Dashboard</a></li>
+            <li class="breadcrumb-item active">Customers</li>
+        </ol>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Customers
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id_Customer</td>
+                                    <td>@item.Name_Customer</td>
+                                    <td>@item.Email_Customer</td>
+                                    <td>@item.Password_Customer</td>
+                                    <td>@item.Phone_Customer</td>
+                                    <td>@item.Addr_Customer</td>
+                                    
+                                    <td>
+                                        @Html.ActionLink("EDIT", "Edit", new { id = @item.Id_Customer }, new { @class = "badge badge-warning" })<br />
+                                        @Html.ActionLink("DELETE", "Delete", new { id = @item.Id_Customer }, new { @class = "badge badge-danger" })
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+

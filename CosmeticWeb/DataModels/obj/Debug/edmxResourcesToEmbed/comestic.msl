@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbComesticModelStoreContainer" CdmEntityContainer="DbComesticEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DbComesticModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbBrands">
+      <EntityTypeMapping TypeName="DbComesticModel.tbBrand">
+        <MappingFragment StoreEntitySet="tbBrands">
+          <ScalarProperty Name="Id_Brand" ColumnName="Id_Brand" />
+          <ScalarProperty Name="Name_Brand" ColumnName="Name_Brand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCarts">
+      <EntityTypeMapping TypeName="DbComesticModel.tbCart">
+        <MappingFragment StoreEntitySet="tbCarts">
+          <ScalarProperty Name="Id_Cart" ColumnName="Id_Cart" />
+          <ScalarProperty Name="Id_Customer" ColumnName="Id_Customer" />
+          <ScalarProperty Name="Image_Product" ColumnName="Image_Product" />
+          <ScalarProperty Name="Name_Product" ColumnName="Name_Product" />
+          <ScalarProperty Name="Id_Product" ColumnName="Id_Product" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitsTotal" ColumnName="UnitsTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCategories">
+      <EntityTypeMapping TypeName="DbComesticModel.tbCategory">
+        <MappingFragment StoreEntitySet="tbCategories">
+          <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
+          <ScalarProperty Name="Name_Category" ColumnName="Name_Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbContacts">
+      <EntityTypeMapping TypeName="DbComesticModel.tbContact">
+        <MappingFragment StoreEntitySet="tbContacts">
+          <ScalarProperty Name="Id_Contact" ColumnName="Id_Contact" />
+          <ScalarProperty Name="Name_Contact" ColumnName="Name_Contact" />
+          <ScalarProperty Name="Email_Contact" ColumnName="Email_Contact" />
+          <ScalarProperty Name="Subject_Contact" ColumnName="Subject_Contact" />
+          <ScalarProperty Name="Content_Contatc" ColumnName="Content_Contatc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCustomers">
+      <EntityTypeMapping TypeName="DbComesticModel.tbCustomer">
+        <MappingFragment StoreEntitySet="tbCustomers">
+          <ScalarProperty Name="Id_Customer" ColumnName="Id_Customer" />
+          <ScalarProperty Name="Name_Customer" ColumnName="Name_Customer" />
+          <ScalarProperty Name="Email_Customer" ColumnName="Email_Customer" />
+          <ScalarProperty Name="Addr_Customer" ColumnName="Addr_Customer" />
+          <ScalarProperty Name="Phone_Customer" ColumnName="Phone_Customer" />
+          <ScalarProperty Name="Password_Customer" ColumnName="Password_Customer" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbNations">
+      <EntityTypeMapping TypeName="DbComesticModel.tbNation">
+        <MappingFragment StoreEntitySet="tbNations">
+          <ScalarProperty Name="Id_Nation" ColumnName="Id_Nation" />
+          <ScalarProperty Name="Name_Nation" ColumnName="Name_Nation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbOrderDetails">
+      <EntityTypeMapping TypeName="DbComesticModel.tbOrderDetail">
+        <MappingFragment StoreEntitySet="tbOrderDetails">
+          <ScalarProperty Name="Id_OrderDetail" ColumnName="Id_OrderDetail" />
+          <ScalarProperty Name="Id_Order" ColumnName="Id_Order" />
+          <ScalarProperty Name="Id_Product" ColumnName="Id_Product" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price_OrderDetail" ColumnName="Price_OrderDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbOrders">
+      <EntityTypeMapping TypeName="DbComesticModel.tbOrder">
+        <MappingFragment StoreEntitySet="tbOrders">
+          <ScalarProperty Name="Id_Order" ColumnName="Id_Order" />
+          <ScalarProperty Name="Id_Customer" ColumnName="Id_Customer" />
+          <ScalarProperty Name="Shipping_Addr" ColumnName="Shipping_Addr" />
+          <ScalarProperty Name="Phone_Reciever" ColumnName="Phone_Reciever" />
+          <ScalarProperty Name="Name_Reciever" ColumnName="Name_Reciever" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price_Total" ColumnName="Price_Total" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbProducts">
+      <EntityTypeMapping TypeName="DbComesticModel.tbProduct">
+        <MappingFragment StoreEntitySet="tbProducts">
+          <ScalarProperty Name="Id_Product" ColumnName="Id_Product" />
+          <ScalarProperty Name="Id_Brand" ColumnName="Id_Brand" />
+          <ScalarProperty Name="Id_Nation" ColumnName="Id_Nation" />
+          <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
+          <ScalarProperty Name="Name_Product" ColumnName="Name_Product" />
+          <ScalarProperty Name="Description_Product" ColumnName="Description_Product" />
+          <ScalarProperty Name="Detail_Product" ColumnName="Detail_Product" />
+          <ScalarProperty Name="Image_Product" ColumnName="Image_Product" />
+          <ScalarProperty Name="Quality_Product" ColumnName="Quality_Product" />
+          <ScalarProperty Name="Price_Product" ColumnName="Price_Product" />
+          <ScalarProperty Name="Sale_Product" ColumnName="Sale_Product" />
+          <ScalarProperty Name="Hot_Product" ColumnName="Hot_Product" />
+          <ScalarProperty Name="Rate_Total_Product" ColumnName="Rate_Total_Product" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbReviewers">
+      <EntityTypeMapping TypeName="DbComesticModel.tbReviewer">
+        <MappingFragment StoreEntitySet="tbReviewers">
+          <ScalarProperty Name="Id_Reviewer" ColumnName="Id_Reviewer" />
+          <ScalarProperty Name="Id_Product" ColumnName="Id_Product" />
+          <ScalarProperty Name="Id_Customer" ColumnName="Id_Customer" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Date_Created_Reviewer" ColumnName="Date_Created_Reviewer" />
+          <ScalarProperty Name="Rate_Reviewer" ColumnName="Rate_Reviewer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbUsers">
+      <EntityTypeMapping TypeName="DbComesticModel.tbUser">
+        <MappingFragment StoreEntitySet="tbUsers">
+          <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+          <ScalarProperty Name="Name_User" ColumnName="Name_User" />
+          <ScalarProperty Name="Email_User" ColumnName="Email_User" />
+          <ScalarProperty Name="Password_User" ColumnName="Password_User" />
+          <ScalarProperty Name="Date_Created_User" ColumnName="Date_Created_User" />
+          <ScalarProperty Name="Status_User" ColumnName="Status_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

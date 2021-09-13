@@ -1,0 +1,43 @@
+﻿@model WebApp.Areas.Admin.Models.UsersBLL
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Paper Stack</title>
+    <link rel="stylesheet" type="text/css" href="~/Assets/admin/css/login.css" />
+</head>
+<body>
+    <div class="container">
+        <section id="content">
+            @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+            {
+                <h1>Login Form</h1>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <br />
+                <div>
+                    @Html.TextBoxFor(m => m.Name_User, new { @id = "username", @placeholder = "Username", @required = "" })
+
+                </div>
+                <div>
+                    @Html.PasswordFor(m => m.Password_User, new { @id = "password", @placeholder = "Password", @required = "" })
+
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.Email_User, new { @id = "password", @placeholder = "Email", @required = "" })
+
+                </div>
+                <div>
+                    <input type="submit" value="Register" />
+                    @*<a href="#">Lost your password?</a>*@
+                    @Html.ActionLink("Login", "Login")
+                </div>
+            }
+            <!-- form -->
+            <!-- <div class="button">
+        <a href="#">Welcome</a>
+    </div> -->
+            <!-- button -->
+        </section><!-- content -->
+    </div><!-- container -->
+</body>
+</html>
